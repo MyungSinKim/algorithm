@@ -14,6 +14,14 @@ public class Test4 {
         System.out.println(test4.replaceSpace(new StringBuffer("We Are Happy.")));
     }
 
+    /**
+     *
+     * 因为牛客网给的是StringBuffer类，这个类只有一个replace方法，因此先把空格的位置记录下来，
+     * 然后当已经替换一个空格的时候，新的空格的位置等于前面空格的数量乘以2
+     *
+     * @param str
+     * @return
+     */
     public String replaceSpace(StringBuffer str) {
         ArrayList<Integer> list = new ArrayList<Integer>(10);
         for (int i = 0; i < str.length(); i++) {
