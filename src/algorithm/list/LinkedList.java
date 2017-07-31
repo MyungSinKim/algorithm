@@ -6,12 +6,13 @@ package algorithm.list;
  */
 //实现一个单链表（有序），并且实现链表节点的插入，删除和遍历链表操作
 
-class Student {
-    int num;
-    Student next;
-}
 
 public class LinkedList {
+    static class Student {
+        int num;
+        Student next;
+    }
+
     public static void main(String[] args) {
         Student head = null;
         for (int i = 1; i <= 50; i++) {
@@ -48,6 +49,12 @@ public class LinkedList {
 
     }
 
+    /**
+     * 单链表的双冒泡排序
+     *
+     * @param start
+     * @param end
+     */
     public static void sort(Student start, Student end) {
         if (start != end) {
             Student p1 = start;
@@ -61,9 +68,9 @@ public class LinkedList {
                 }
                 p2 = p2.next;
             }
-            int temp = p1.num ;
-            p1.num =start.num ;
-            start.num =temp;
+            int temp = p1.num;
+            p1.num = start.num;
+            start.num = temp;
             sort(start, p1);
             sort(p1.next, null);
         }
