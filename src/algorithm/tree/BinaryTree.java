@@ -211,7 +211,7 @@ public class BinaryTree {
             currentTreeNode = stack.peek();
             if ((currentTreeNode.left == null && currentTreeNode.right == null) ||
                     (preTreeNode != null && (preTreeNode == currentTreeNode.left || preTreeNode == currentTreeNode.right))) {
-                System.out.print(treeNode.val + " ");
+                System.out.print(currentTreeNode.val + " ");
                 stack.pop();
                 preTreeNode = currentTreeNode;
             } else {
