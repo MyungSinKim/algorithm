@@ -53,6 +53,9 @@ public class BinaryTree {
         System.out.println("后序非递归");
         postStack(treeNode1);
         System.out.println();
+        System.out.println("后序非递归2");
+        postStack2(treeNode1);
+        System.out.println();
     }
 
     /**
@@ -188,6 +191,35 @@ public class BinaryTree {
                 } else {
                     System.out.print(tagNode.treeNode.val + " ");
                     treeNode = null;
+                }
+            }
+        }
+    }
+
+    /**
+     * 后序非递归2
+     *
+     * @param treeNode
+     */
+    public static void postStack2(TreeNode treeNode) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode currentTreeNode;
+        TreeNode preTreeNode = null;
+        stack.push(treeNode);
+
+        while (!stack.isEmpty()) {
+            currentTreeNode = stack.peek();
+            if ((currentTreeNode.left == null && currentTreeNode.right == null) ||
+                    (preTreeNode != null && (preTreeNode == currentTreeNode.left || preTreeNode == currentTreeNode.right))) {
+                System.out.print(treeNode.val + " ");
+                stack.pop();
+                preTreeNode = currentTreeNode;
+            } else {
+                if (currentTreeNode.right != null) {
+                    stack.push(currentTreeNode.right);
+                }
+                if (currentTreeNode.left != null) {
+                    stack.push(currentTreeNode.left);
                 }
             }
         }
