@@ -22,3 +22,5 @@
 3. **查找**
     - [二分查找法的实现和应用汇总](http://www.cnblogs.com/ider/archive/2012/04/01/binary_search.html)
 4. **字符串**
+5. **递归**
+    - [尾调用优化](http://www.ruanyifeng.com/blog/2015/04/tail-call.html)

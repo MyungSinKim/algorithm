@@ -7,8 +7,8 @@ package algorithm.offer;
 public class Test9 {
     public static void main(String[] args) {
         Test9 test9 = new Test9();
-        System.out.println(test9.Fibonacci(390000));
-        System.out.println(test9.Fibonacci3(39));
+        System.out.println(test9.Fibonacci(10));
+        System.out.println(test9.Fibonacci2(10));
     }
 
 
@@ -46,14 +46,14 @@ public class Test9 {
      * @param n
      * @return
      */
-    public int Fibonacci3(int n) {
+    public int Fibonacci2(int n) {
         if (n <= 0) {
             return 0;
         }
         if (n == 1 || n == 2) {
             return 1;
         } else {
-            return Fibonacci3(n - 1) + Fibonacci3(n - 2);
+            return Fibonacci2(n - 1) + Fibonacci2(n - 2);
         }
     }
 }
