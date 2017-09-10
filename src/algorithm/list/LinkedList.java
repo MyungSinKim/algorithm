@@ -48,7 +48,7 @@ public class LinkedList {
         head = reverse(head);
 
         System.out.println("3. 查找单链表中的倒数第K个结点（k > 0）");
-        Node kNode = getKNode(head, 6);
+        Node kNode = getKNode(head, 0);
         System.out.println(kNode != null ? kNode.num : null);
 
         System.out.println("4. 查找单链表的中间结点");
@@ -205,7 +205,7 @@ public class LinkedList {
      * @return
      */
     public static Node getKNode(Node head, int k) {
-        if (k < 0 || head == null) {
+        if (k <= 0 || head == null) {
             return null;
         }
         Node p2 = head, p1 = head;
