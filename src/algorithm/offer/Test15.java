@@ -45,18 +45,4 @@ public class Test15 {
             System.out.print(array[i] + " ");
         }
     }
-
-    /**
-     * @param array
-     */
-    public void reOrderArray2(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.println();
-
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-    }
 }
