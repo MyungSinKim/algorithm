@@ -7,14 +7,14 @@ public class QuickSort {
     public static void main(String[] args) {
         long staruTime = System.currentTimeMillis();
         int[] num = new int[3000000];
-        for (int i = 0; i < num.length; i++)
-            num[i] = (int) (Math.random() * 100);
+        for (int i = 0; i < num.length; i++)num[i] = (int) (Math.random() * 100);
+
 
 //        for (int n : num)
 //            System.out.print(n + " ");
         System.out.println();
-
         quickSort(num, 0, num.length - 1);
+
 //        for (int i : num)
 //            System.out.print(i + " ");
         long endTime = System.currentTimeMillis();
