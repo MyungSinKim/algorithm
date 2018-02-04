@@ -1,7 +1,7 @@
 package algorithm.search;
 
 /**
- * http://www.cnblogs.com/ider/archive/2012/04/01/binary_search.html
+ *
  * 二分查找的时间复杂度是 O(lg n)
  * 二分查找的查找要求是有序数组
  *

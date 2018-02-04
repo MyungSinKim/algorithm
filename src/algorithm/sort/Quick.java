@@ -3,7 +3,7 @@ package algorithm.sort;
 /**
  * Created by think on 2016/9/16.
  */
-public class QuickSort {
+public class Quick {
     public static void main(String[] args) {
         long staruTime = System.currentTimeMillis();
         int[] num = new int[3000000];
@@ -13,7 +13,7 @@ public class QuickSort {
 //        for (int n : num)
 //            System.out.print(n + " ");
         System.out.println();
-        quickSort(num, 0, num.length - 1);
+        sort(num, 0, num.length - 1);
 
 //        for (int i : num)
 //            System.out.print(i + " ");
@@ -22,7 +22,7 @@ public class QuickSort {
         System.out.println((endTime - staruTime) + "ms");
     }
 
-    public static void quickSort(int[] num, int l, int r) {
+    public static void sort(int[] num, int l, int r) {
         if (l < r) {
             int key = num[l];
 //            System.out.println("The key:" + num[l]);
@@ -44,8 +44,8 @@ public class QuickSort {
 //            for (int n : num)
 //                System.out.print(n + " ");
 //            System.out.println();
-            quickSort(num, l, i - 1);
-            quickSort(num, i + 1, r);
+            sort(num, l, i - 1);
+            sort(num, i + 1, r);
         }
     }
 }

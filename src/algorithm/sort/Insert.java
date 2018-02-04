@@ -30,14 +30,14 @@ public class Insert {
      */
     public static void sort2(int[] a) {
         for (int i = 0; i < a.length - 1; i++) {
-
             int num = a[i + 1];
-            for (int j = i; j > 0; j--) {
-                if (a[j] < num) {
-                    for (int m = i; m > j; m--) {
+            for (int j = 0; j <= i; j++) {
+                if (num < a[j]) {
+                    for (int m = i; m >= j; m--) {
                         a[m + 1] = a[m];
                     }
-                    a[j + 1] = num;
+                    a[j] = num;
+                    break;
                 }
             }
         }
