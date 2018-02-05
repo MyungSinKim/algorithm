@@ -4,7 +4,7 @@ package algorithm.sort;
  * @author 李文浩
  * @date 2018/1/25
  */
-public class Insert {
+public class Insertion {
 
     /**
      * 通过交换进行插入排序
@@ -24,7 +24,7 @@ public class Insert {
     }
 
     /**
-     * 通过将较大的元素都向右移动
+     * 通过将较大的元素都向右移动而不总是交换两个元素，这样访问数组的次数就能减半
      *
      * @param a
      */
