@@ -32,6 +32,7 @@ public class BinaryTree {
         treeNode2.right = treeNode5;
         treeNode3.left = treeNode6;
 
+        System.out.println("高度:" + height(treeNode1));
 //        System.out.println("先序递归");
 //        preOrder(treeNode1);
 //        System.out.println();
@@ -56,6 +57,22 @@ public class BinaryTree {
         System.out.println("后序非递归2");
         postStack2(treeNode1);
         System.out.println();
+    }
+
+    public static int height(TreeNode node) {
+        TreeNode left = node.left, right = node.right;
+        if (left == null && right == null) {
+            return 1;
+        }
+        if (left == null && right != null) {
+            return height(right) + 1;
+        }
+        if (right == null && left != null) {
+            return height(left) + 1;
+        }
+        int leftHeight = height(left);
+        int rightHeight = height(right);
+        return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
     }
 
     /**
