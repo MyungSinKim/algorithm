@@ -15,24 +15,28 @@ class ListNode {
     }
 }
 
-public class SortList {
+public class Leetcode_148_SortList {
 
     public static void main(String[] args) {
 
         ListNode head = new ListNode(12);
-        head = addBack(head, 3);
-        head = addBack(head, 10);
-        head = addBack(head, 25);
-        head = addBack(head, 12);
-        head = addBack(head, 5);
-        head = addBack(head, 55);
-        head = addBack(head, 55);
+//        head = addBack(head, 3);
+//        head = addBack(head, 10);
+//        head = addBack(head, 25);
+//        head = addBack(head, 12);
+//        head = addBack(head, 5);
+//        head = addBack(head, 55);
+//        head = addBack(head, 55);
 
-//        for (int i = 0; i < 100000; i++)
+//        for (int i = 0; i < 10; i++)
 //            head = addBack(head, (int) (Math.random() * 100));
+        System.out.print("排序前:");
         print(head);
 
-        head = new SortList().sortList(head);
+//        head = new Leetcode_148_SortList().sortList(head);
+
+        head = new Leetcode_147_InsertionSortList().insertionSortList(head);
+        System.out.print("排序后:");
         print(head);
     }
 

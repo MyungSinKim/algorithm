@@ -1,7 +1,6 @@
 //package algorithm.leetcode;
 //
 //import java.util.HashMap;
-//import java.util.Map;
 //
 ///**
 // * Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
@@ -9,7 +8,7 @@
 // * @author 李文浩
 // * @date 2018/2/13
 // */
-//public class MaxPointsOnALine {
+//public class Leetcode_149_MaxPointsOnALine {
 //    public static class Point {
 //        int x;
 //        int y;
@@ -44,7 +43,7 @@
 //            System.out.print(point.x + "," + point.y + "          ");
 //        }
 //        System.out.println();
-//        MaxPointsOnALine maxPointsOnALine = new MaxPointsOnALine();
+//        Leetcode_149_MaxPointsOnALine maxPointsOnALine = new Leetcode_149_MaxPointsOnALine();
 //        System.out.println(maxPointsOnALine.maxPoints(points));
 //    }
 //

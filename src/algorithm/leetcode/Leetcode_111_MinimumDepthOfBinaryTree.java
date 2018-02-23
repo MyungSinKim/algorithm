@@ -14,7 +14,7 @@ package algorithm.leetcode;
  * @author 李文浩
  * @date 2018/2/12
  */
-public class MinimumDepthOfBinaryTree {
+public class Leetcode_111_MinimumDepthOfBinaryTree {
 
     public static class TreeNode {
         int val;
@@ -32,7 +32,7 @@ public class MinimumDepthOfBinaryTree {
         System.out.println(object);
     }
 
-    public int run(TreeNode root) {
+    public int minDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -41,13 +41,13 @@ public class MinimumDepthOfBinaryTree {
             return 1;
         }
         if (left == null && right != null) {
-            return run(right) + 1;
+            return minDepth(right) + 1;
         }
         if (right == null && left != null) {
-            return run(left) + 1;
+            return minDepth(left) + 1;
         }
-        int leftHeight = run(left);
-        int rightHeight = run(right);
+        int leftHeight = minDepth(left);
+        int rightHeight = minDepth(right);
         return leftHeight < rightHeight ? leftHeight + 1 : rightHeight + 1;
     }
 }

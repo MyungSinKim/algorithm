@@ -12,7 +12,7 @@ import java.util.Stack;
  * @author 李文浩
  * @date 2018/2/13
  */
-public class evaluateReversePolishNotation {
+public class Leetcode_150_EvaluateReversePolishNotation {
     public static void main(String[] args) {
         String[] tokens = {"3", "4", "-", "5", "+"};
         System.out.println(evalRPN(tokens));
