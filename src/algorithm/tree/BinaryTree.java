@@ -33,24 +33,24 @@ public class BinaryTree {
         treeNode3.left = treeNode6;
 
         System.out.println("高度:" + height(treeNode1));
-//        System.out.println("先序递归");
-//        preOrder(treeNode1);
-//        System.out.println();
-//        System.out.println("中序递归");
-//        inOrder(treeNode1);
-//        System.out.println();
+        System.out.println("先序递归");
+        preOrder(treeNode1);
+        System.out.println();
+        System.out.println("中序递归");
+        inOrder(treeNode1);
+        System.out.println();
         System.out.println("后序递归");
         postOrder(treeNode1);
         System.out.println();
-//        System.out.println("先序非递归");
-//        preStack(treeNode1);
-//        System.out.println();
-//        System.out.println("先序非递归2");
-//        preStack2(treeNode1);
-//        System.out.println();
-//        System.out.println("中序非递归");
-//        inStack(treeNode1);
-//        System.out.println();
+        System.out.println("先序非递归");
+        preStack(treeNode1);
+        System.out.println();
+        System.out.println("先序非递归2");
+        preStack2(treeNode1);
+        System.out.println();
+        System.out.println("中序非递归");
+        inStack(treeNode1);
+        System.out.println();
         System.out.println("后序非递归");
         postStack(treeNode1);
         System.out.println();
@@ -124,10 +124,10 @@ public class BinaryTree {
         stack.push(root);
         while (!stack.isEmpty()) {
             TreeNode treeNode = stack.pop();
-            System.out.print(treeNode.val + " ");
             if (treeNode.right != null) {
                 stack.push(treeNode.right);
             }
+            System.out.print(treeNode.val + " ");
             if (treeNode.left != null) {
                 stack.push(treeNode.left);
             }
@@ -162,7 +162,7 @@ public class BinaryTree {
      *
      * @param treeNode
      */
-    public static void inStack(TreeNode treeNode) {
+    public static void inStack(TreeNode treeNode) { 
         Stack<TreeNode> stack = new Stack<>();
         while (treeNode != null || !stack.isEmpty()) {
             while (treeNode != null) {
