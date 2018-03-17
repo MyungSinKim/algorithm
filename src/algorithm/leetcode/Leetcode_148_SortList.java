@@ -39,7 +39,39 @@ public class Leetcode_148_SortList {
         System.out.print("排序后:");
         print(head);
     }
-
+    //    public void reorderList(ListNode head) {
+//        if (head == null)
+//            return;
+//        ListNode slow = head;
+//        ListNode fast = head;
+//        while (fast.next != null && fast.next.next != null) {
+//            fast = fast.next.next;
+//            slow = slow.next;
+//        }
+//        ListNode pre = slow.next;
+//        if (pre != null && pre.next != null) {
+//            ListNode nex = pre.next;
+//            while (nex != null) {
+//                pre.next = nex.next;
+//                nex.next = slow.next;
+//                slow.next = nex;
+//                nex = pre.next;
+//            }
+//        }
+//        merge(head, slow);
+//    }
+//
+//    public void merge(ListNode head, ListNode slow) {
+//        ListNode p = head;
+//        ListNode q = slow.next;
+//        while (q != null && p != null) {
+//            slow.next = q.next;
+//            q.next = p.next;
+//            p.next = q;
+//            q = slow.next;
+//            p = p.next.next;
+//        }
+//    }
     public static ListNode addBack(ListNode head, int val) {
         ListNode newNode = new ListNode(val);
         newNode.next = null;
