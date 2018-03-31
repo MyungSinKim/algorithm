@@ -1,6 +1,8 @@
 package algorithm.tree;
 
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -33,46 +35,63 @@ public class BinaryTree {
         treeNode3.left = treeNode6;
 
         System.out.println("高度:" + height(treeNode1));
-        System.out.println("先序递归");
+        System.out.print("层序遍历:");
+        levelTraversal(treeNode1);
+        System.out.print("\n先序递归:");
         preOrder(treeNode1);
-        System.out.println();
-        System.out.println("中序递归");
+        System.out.print("\n中序递归:");
         inOrder(treeNode1);
-        System.out.println();
-        System.out.println("后序递归");
+        System.out.print("\n后序递归:");
         postOrder(treeNode1);
-        System.out.println();
-        System.out.println("先序非递归");
+        System.out.print("\n先序非递归:");
         preStack(treeNode1);
-        System.out.println();
-        System.out.println("先序非递归2");
+        System.out.print("\n先序非递归2:");
         preStack2(treeNode1);
-        System.out.println();
-        System.out.println("中序非递归");
+        System.out.print("\n中序非递归:");
         inStack(treeNode1);
-        System.out.println();
-        System.out.println("后序非递归");
+        System.out.print("\n后序非递归:");
         postStack(treeNode1);
-        System.out.println();
-        System.out.println("后序非递归2");
+        System.out.print("\n后序非递归2:");
         postStack2(treeNode1);
-        System.out.println();
     }
 
+    /**
+     * 高度，左右子树中的较大值
+     *
+     * @param node
+     * @return
+     */
     public static int height(TreeNode node) {
-        TreeNode left = node.left, right = node.right;
-        if (left == null && right == null) {
-            return 1;
+        if (node == null) {
+            return 0;
         }
-        if (left == null && right != null) {
-            return height(right) + 1;
-        }
-        if (right == null && left != null) {
-            return height(left) + 1;
-        }
-        int leftHeight = height(left);
-        int rightHeight = height(right);
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
         return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+    }
+
+    /**
+     * 层序遍历一颗二叉树，用广度优先搜索的思想，使用一个队列来按照层的顺序存放节点
+     * 先将根节点入队列，只要队列不为空，然后出队列，并访问，接着讲访问节点的左右子树依次入队列
+     *
+     * @param node
+     */
+    public static void levelTraversal(TreeNode node) {
+        if (node == null)
+            return;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(node);
+        TreeNode treeNode;
+        while (!queue.isEmpty()) {
+            treeNode = queue.poll();
+            System.out.print(treeNode.val + " ");
+            if (treeNode.left != null) {
+                queue.offer(treeNode.left);
+            }
+            if (treeNode.right != null) {
+                queue.offer(treeNode.right);
+            }
+        }
     }
 
     /**
@@ -116,6 +135,10 @@ public class BinaryTree {
 
     /**
      * 先序非递归
+     * <p>
+     * 这种实现类似于图的深度优先遍历（DFS）
+     * 维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，接着依次将访问节点的右节点、左节点入栈。
+     * 这种方式应该是对先序遍历的一种特殊实现（看上去简单明了），但是不具备很好的扩展性，在中序和后序方式中不适用
      *
      * @param root
      */
@@ -136,6 +159,8 @@ public class BinaryTree {
 
     /**
      * 先序非递归2
+     * 利用栈模拟递归过程实现循环先序遍历二叉树
+     * 这种方式具备扩展性，它模拟递归的过程，将左子树点不断的压入栈，直到null，然后处理栈顶节点的右子树
      *
      * @param root
      */
@@ -159,10 +184,12 @@ public class BinaryTree {
 
     /**
      * 中序非递归
+     * 利用栈模拟递归过程实现循环中序遍历二叉树
+     * 思想和上面的先序非递归2相同，只是访问的时间是在左子树都处理完直到null的时候出栈并访问。
      *
      * @param treeNode
      */
-    public static void inStack(TreeNode treeNode) { 
+    public static void inStack(TreeNode treeNode) {
         Stack<TreeNode> stack = new Stack<>();
         while (treeNode != null || !stack.isEmpty()) {
             while (treeNode != null) {
