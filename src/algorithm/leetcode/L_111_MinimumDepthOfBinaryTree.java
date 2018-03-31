@@ -14,7 +14,7 @@ package algorithm.leetcode;
  * @author 李文浩
  * @date 2018/2/12
  */
-public class Leetcode_111_MinimumDepthOfBinaryTree {
+public class L_111_MinimumDepthOfBinaryTree {
 
     public static class TreeNode {
         int val;

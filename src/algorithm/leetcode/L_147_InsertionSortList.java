@@ -6,7 +6,7 @@ package algorithm.leetcode;
  */
 
 
-public class Leetcode_147_InsertionSortList {
+public class L_147_InsertionSortList {
     /**
      * 新建一个链表，然后遍历原链表按序插入新链表
      *

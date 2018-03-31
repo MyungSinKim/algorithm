@@ -8,7 +8,7 @@ import java.util.Stack;
  * @author 李文浩
  * @date 2018/2/24
  */
-public class Leetcode_144_BinaryTreePreorderTraversal {
+public class L_144_BinaryTreePreorderTraversal {
     static class TreeNode {
         int val;
         TreeNode left;
@@ -31,7 +31,7 @@ public class Leetcode_144_BinaryTreePreorderTraversal {
         treeNode2.left = treeNode4;
         treeNode2.right = treeNode5;
         treeNode3.left = treeNode6;
-        List<Integer> list = new Leetcode_144_BinaryTreePreorderTraversal().preorderTraversal(treeNode1);
+        List<Integer> list = new L_144_BinaryTreePreorderTraversal().preorderTraversal(treeNode1);
 
         for (Integer integer : list) {
             System.out.print(integer + " ");

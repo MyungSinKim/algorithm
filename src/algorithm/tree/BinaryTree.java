@@ -11,7 +11,10 @@ import java.util.Stack;
  */
 public class BinaryTree {
 
-    public static class TreeNode {
+    /**
+     * 节点定义
+     */
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -33,7 +36,6 @@ public class BinaryTree {
         treeNode2.left = treeNode4;
         treeNode2.right = treeNode5;
         treeNode3.left = treeNode6;
-
         System.out.println("高度:" + height(treeNode1));
         System.out.print("层序遍历:");
         levelTraversal(treeNode1);
@@ -44,15 +46,15 @@ public class BinaryTree {
         System.out.print("\n后序递归:");
         postOrder(treeNode1);
         System.out.print("\n先序非递归:");
-        preStack(treeNode1);
+        preOrderStack(treeNode1);
         System.out.print("\n先序非递归2:");
-        preStack2(treeNode1);
+        preOrderStack2(treeNode1);
         System.out.print("\n中序非递归:");
-        inStack(treeNode1);
+        inOrderStack(treeNode1);
         System.out.print("\n后序非递归:");
-        postStack(treeNode1);
+        postOrderStack(treeNode1);
         System.out.print("\n后序非递归2:");
-        postStack2(treeNode1);
+        postOrderStack2(treeNode1);
     }
 
     /**
@@ -134,23 +136,24 @@ public class BinaryTree {
     }
 
     /**
-     * 先序非递归
-     * <p>
-     * 这种实现类似于图的深度优先遍历（DFS）
-     * 维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，接着依次将访问节点的右节点、左节点入栈。
-     * 这种方式应该是对先序遍历的一种特殊实现（看上去简单明了），但是不具备很好的扩展性，在中序和后序方式中不适用
+     * 先序非递归：
+     * 这种实现类似于图的深度优先遍历（DFS）。
+     * 维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，
+     * 接着依次将访问节点的右节点、左节点入栈。
+     * 这种方式应该是对先序遍历的一种特殊实现（看上去简单明了），
+     * 但是不具备很好的扩展性，在中序和后序方式中不适用
      *
      * @param root
      */
-    public static void preStack(TreeNode root) {
+    public static void preOrderStack(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             TreeNode treeNode = stack.pop();
+            System.out.print(treeNode.val + " ");
             if (treeNode.right != null) {
                 stack.push(treeNode.right);
             }
-            System.out.print(treeNode.val + " ");
             if (treeNode.left != null) {
                 stack.push(treeNode.left);
             }
@@ -158,21 +161,25 @@ public class BinaryTree {
     }
 
     /**
-     * 先序非递归2
-     * 利用栈模拟递归过程实现循环先序遍历二叉树
-     * 这种方式具备扩展性，它模拟递归的过程，将左子树点不断的压入栈，直到null，然后处理栈顶节点的右子树
+     * 先序非递归2：
+     * 利用栈模拟递归过程实现循环先序遍历二叉树。
+     * 这种方式具备扩展性，它模拟递归的过程，将左子树点不断的压入栈，直到null，
+     * 然后处理栈顶节点的右子树。
      *
      * @param root
      */
-    public static void preStack2(TreeNode root) {
+    public static void preOrderStack2(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode treeNode = root;
         while (treeNode != null || !stack.isEmpty()) {
+            //将左子树点不断的压入栈
             while (treeNode != null) {
+                //先访问再入栈
                 System.out.print(treeNode.val + " ");
                 stack.push(treeNode);
                 treeNode = treeNode.left;
             }
+            //出栈并处理右子树
             if (!stack.isEmpty()) {
                 treeNode = stack.pop();
                 treeNode = treeNode.right;
@@ -183,19 +190,21 @@ public class BinaryTree {
     }
 
     /**
-     * 中序非递归
-     * 利用栈模拟递归过程实现循环中序遍历二叉树
-     * 思想和上面的先序非递归2相同，只是访问的时间是在左子树都处理完直到null的时候出栈并访问。
+     * 中序非递归：
+     * 利用栈模拟递归过程实现循环中序遍历二叉树。
+     * 思想和上面的先序非递归2相同，
+     * 只是访问的时间是在左子树都处理完直到null的时候出栈并访问。
      *
      * @param treeNode
      */
-    public static void inStack(TreeNode treeNode) {
+    public static void inOrderStack(TreeNode treeNode) {
         Stack<TreeNode> stack = new Stack<>();
         while (treeNode != null || !stack.isEmpty()) {
             while (treeNode != null) {
                 stack.push(treeNode);
                 treeNode = treeNode.left;
             }
+            //左子树进栈完毕
             if (!stack.isEmpty()) {
                 treeNode = stack.pop();
                 System.out.print(treeNode.val + " ");
@@ -210,14 +219,25 @@ public class BinaryTree {
     }
 
     /**
-     * 后序非递归
+     * 后序非递归：
+     * 后序遍历不同于先序和中序，它是要先处理完左右子树，
+     * 然后再处理根(回溯)。
+     * <p>
+     * <p>
+     * 对于任一结点P，将其入栈，然后沿其左子树一直往下搜索，直到搜索到没有左孩子的结点，
+     * 此时该结点出现在栈顶，但是此时不能将其出栈并访问，因此其右孩子还为被访问。
+     * 所以接下来按照相同的规则对其右子树进行相同的处理，当访问完其右孩子时，该结点又出现在栈顶，
+     * 此时可以将其出栈并访问。这样就保证了正确的访问顺序。
+     * 可以看出，在这个过程中，每个结点都两次出现在栈顶，只有在第二次出现在栈顶时，才能访问它。
+     * 因此需要多设置一个变量标识该结点是否是第一次出现在栈顶，这里是在树结构里面加一个标记，然后合成一个新的TagNode。
      *
      * @param treeNode
      */
-    public static void postStack(TreeNode treeNode) {
+    public static void postOrderStack(TreeNode treeNode) {
         Stack<TagNode> stack = new Stack<>();
         TagNode tagNode;
         while (treeNode != null || !stack.isEmpty()) {
+            //沿左子树一直往下搜索，直至出现没有左子树的结点
             while (treeNode != null) {
                 tagNode = new TagNode();
                 tagNode.treeNode = treeNode;
@@ -228,11 +248,13 @@ public class BinaryTree {
 
             if (!stack.isEmpty()) {
                 tagNode = stack.pop();
+                //表示是第一次出现在栈顶
                 if (tagNode.isFirst == true) {
                     tagNode.isFirst = false;
                     stack.push(tagNode);
                     treeNode = tagNode.treeNode.right;
                 } else {
+                    //第二次出现在栈顶
                     System.out.print(tagNode.treeNode.val + " ");
                     treeNode = null;
                 }
@@ -241,11 +263,15 @@ public class BinaryTree {
     }
 
     /**
-     * 后序非递归2
+     * 后序非递归2：
+     * 要保证根结点在左孩子和右孩子访问之后才能访问，因此对于任一结点P，先将其入栈。如果P不存在左孩子和右孩子，则可以直接访问它；
+     * 或者P存在左孩子或者右孩子，但是其左孩子和右孩子都已被访问过了，则同样可以直接访问该结点。
+     * 若非上述两种情况，则将P的右孩子和左孩子依次入栈，这样就保证了每次取栈顶元素的时候，左孩子在右孩子前面被访问，
+     * 左孩子和右孩子都在根结点前面被访问。
      *
      * @param treeNode
      */
-    public static void postStack2(TreeNode treeNode) {
+    public static void postOrderStack2(TreeNode treeNode) {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode currentTreeNode;
         TreeNode preTreeNode = null;
@@ -253,6 +279,7 @@ public class BinaryTree {
 
         while (!stack.isEmpty()) {
             currentTreeNode = stack.peek();
+            //如果当前结点没有孩子结点或者孩子节点都已被访问过
             if ((currentTreeNode.left == null && currentTreeNode.right == null) ||
                     (preTreeNode != null && (preTreeNode == currentTreeNode.left || preTreeNode == currentTreeNode.right))) {
                 System.out.print(currentTreeNode.val + " ");

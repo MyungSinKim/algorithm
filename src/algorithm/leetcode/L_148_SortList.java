@@ -15,7 +15,7 @@ class ListNode {
     }
 }
 
-public class Leetcode_148_SortList {
+public class L_148_SortList {
 
     public static void main(String[] args) {
 
@@ -33,9 +33,9 @@ public class Leetcode_148_SortList {
         System.out.print("排序前:");
         print(head);
 
-//        head = new Leetcode_148_SortList().sortList(head);
+//        head = new L_148_SortList().sortList(head);
 
-        head = new Leetcode_147_InsertionSortList().insertionSortList(head);
+        head = new L_147_InsertionSortList().insertionSortList(head);
         System.out.print("排序后:");
         print(head);
     }
