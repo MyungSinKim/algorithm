@@ -1,4 +1,4 @@
-package algorithm.leetcode;
+package algorithm.leetcode.dp;
 
 import java.util.*;
 
